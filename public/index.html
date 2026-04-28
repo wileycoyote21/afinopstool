@@ -172,7 +172,7 @@ async function uploadPricing(){
   let fd = new FormData();
   fd.append("file", f);
 
-  let r = await fetch("/upload_pricing",{method:"POST",body:fd});
+  let r = await fetch("/api/upload_pricing",{method:"POST",body:fd});
   let j = await r.json();
 
   alert("Loaded " + j.count + " rows");
@@ -186,7 +186,7 @@ async function run(){
     return {instance:p[0], qty:parseInt(p[1])};
   });
 
-  let r = await fetch("/analyze",{
+  let r = await fetch("/api/analyze",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify({usage})
