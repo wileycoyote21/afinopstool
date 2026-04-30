@@ -6,6 +6,8 @@ export default function Home() {
   const [file, setFile] = useState<File | null>(null);
 
   const handleRun = async () => {
+    alert("Run Analysis clicked");
+
     if (!file) {
       alert("Please upload a file first");
       return;
@@ -14,14 +16,19 @@ export default function Home() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("/api/analyze", {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const res = await fetch("/api/analyze", {
+        method: "POST",
+        body: formData,
+      });
 
-    const data = await res.json();
-    console.log(data);
-    alert("Check console for response");
+      const data = await res.json();
+      console.log("API response:", data);
+      alert("Check console for response");
+    } catch (err) {
+      console.error(err);
+      alert("Error calling API");
+    }
   };
 
   return (
@@ -45,14 +52,15 @@ export default function Home() {
         <button
           onClick={handleRun}
           style={{
-            padding: "10px 20px",
-            backgroundColor: "black",
+            padding: "12px 24px",
+            backgroundColor: "red",
             color: "white",
             border: "none",
             cursor: "pointer",
+            fontWeight: "bold",
           }}
         >
-          Run Analysis
+          TEST RUN ANALYSIS
         </button>
       </div>
 
