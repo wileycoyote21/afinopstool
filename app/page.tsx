@@ -6,11 +6,21 @@ export default function Home() {
       <div style={{ marginTop: "20px" }}>
         <p><strong>AWS Analysis (v1)</strong></p>
 
-        <input type="file" />
+        <input type="file" style={{ marginTop: "10px" }} />
 
         <br /><br />
 
-        <button>Run Analysis</button>
+        <button
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "black",
+            color: "white",
+            border: "none",
+            cursor: "pointer"
+          }}
+        >
+          Run Analysis
+        </button>
       </div>
 
       <div style={{ marginTop: "40px" }}>
